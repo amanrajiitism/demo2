@@ -1,0 +1,5 @@
+app:
+  welcomeMessage: "Hello from ConfigMap!"
+logging:
+  level:
+    root: "DEBUG"

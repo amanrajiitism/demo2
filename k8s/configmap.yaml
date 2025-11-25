@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo2-config
+data:
+  app.welcomeMessage: "Hello from ConfigMap!"
+  logging.level.root: "DEBUG"
