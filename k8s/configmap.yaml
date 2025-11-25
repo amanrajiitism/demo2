@@ -3,5 +3,6 @@ kind: ConfigMap
 metadata:
   name: demo2-config
 data:
-  app.welcomeMessage: "Hello from ConfigMap!"
-  logging.level.root: "DEBUG"
+  application.properties: |
+    app.welcomeMessage=Hello from ConfigMap!
+    logging.level.root=DEBUG
