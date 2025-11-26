@@ -3,3 +3,5 @@ app:
 logging:
   level:
     root: "DEBUG"
+calculation:
+  type: float

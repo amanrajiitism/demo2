@@ -4,5 +4,6 @@ metadata:
   name: demo2-config
 data:
   application.properties: |
-    app.welcomeMessage=Hello from ConfigMap!
-    logging.level.root=DEBUG
+    app.welcomeMessage={{ .Values.app.welcomeMessage | quote }}
+    logging.level.root={{ .Values.logging.level.root | quote }}
+    calculation.type={{ .Values.calculation.type | quote }}
