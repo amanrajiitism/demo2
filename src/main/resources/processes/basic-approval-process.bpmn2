@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    id="Definition"
+    targetNamespace="http://www.jbpm.org/test">
+
+    <bpmn2:process id="basic-approval-process" name="Basic Approval Process" isExecutable="true">
+
+        <!-- START -->
+        <bpmn2:startEvent id="StartEvent" name="Start"/>
+
+        <!-- VALIDATE INPUT -->
+        <bpmn2:scriptTask id="ValidateInput" name="Validate Input" scriptFormat="java">
+            <bpmn2:script>
+               System.out.println("Validating input...");
+            </bpmn2:script>
+        </bpmn2:scriptTask>
+
+        <!-- USER TASK -->
+        <bpmn2:userTask id="ReviewTask" name="Review Request">
+            <bpmn2:potentialOwner>
+                <bpmn2:resourceAssignmentExpression>
+                    <bpmn2:formalExpression>john</bpmn2:formalExpression>
+                </bpmn2:resourceAssignmentExpression>
+            </bpmn2:potentialOwner>
+        </bpmn2:userTask>
+
+        <!-- SERVICE TASK -->
+        <bpmn2:scriptTask id="NotifyTask" name="Notify Result" scriptFormat="java">
+            <bpmn2:script>
+                System.out.println("Sending notification...");
+            </bpmn2:script>
+        </bpmn2:scriptTask>
+
+        <!-- END -->
+        <bpmn2:endEvent id="EndEvent"/>
+
+        <!-- FLOWS -->
+        <bpmn2:sequenceFlow sourceRef="StartEvent" targetRef="ValidateInput"/>
+        <bpmn2:sequenceFlow sourceRef="ValidateInput" targetRef="ReviewTask"/>
+        <bpmn2:sequenceFlow sourceRef="ReviewTask" targetRef="NotifyTask"/>
+        <bpmn2:sequenceFlow sourceRef="NotifyTask" targetRef="EndEvent"/>
+
+    </bpmn2:process>
+
+</bpmn2:definitions>

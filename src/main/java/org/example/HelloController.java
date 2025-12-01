@@ -42,20 +42,20 @@ public class HelloController {
     public Map<String, Object> division(@RequestParam int a, @RequestParam int b) {
         logger.info("Received request to divide: a={}, b={}", a, b);
         Map<String, Object> response = new LinkedHashMap<>();
-        if (b == 0) {
+//        if (b == 0) {
+//
+//            response.put("message :", "invalid input");
+//            return response;
+//        }
 
-            response.put("message :", "invalid input");
-            return response;
-        }
-        if (calculationType.equalsIgnoreCase("int")) {
              int result = a / b;
             response.put("division of the two integers is : ", result);
             logger.debug("Calculation for division completed Result={}", result);
-        } else {
-           float result = (int) ((float) a / b);
+
+         //  float result = (int) ((float) a / b);
             response.put("division of the two numbers is : ", result);
             logger.debug("Calculation completed Result={}", result);
-        }
+
         response.put("message :", "calculation successful");
         response.put("first number to divide :", a);
         response.put("second number to divide with : ", b);
